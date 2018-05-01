@@ -1,0 +1,100 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- Rollover Demonstration Program -->
+<!-- Written by Bernard Doyle -->
+
+<!-- by creating this style we set the display -->
+<!--for the whole page to 320 pixels wide and 400 pixels deep -->
+
+<style type="text/css">
+
+#display_area 
+{   position:absolute;
+    top:0px;
+    left:0px;
+    padding:0px;
+    width:320px;
+    height:400px;
+}
+
+</style>
+<title>Rollover Demonstration</title>
+
+<script language="javascript">
+function displaygraphic(option)
+{
+    var blank = document.getElementById('blank');
+    blank.style.zindex=0;
+    var black = document.getElementById('black');
+    black.style.zindex=0;
+    var blue = document.getElementById('blue');
+    blue.style.zindex=0;
+    var red = document.getElementById('red');
+    red.style.zindex=0;
+    blank.style.visibility="hidden";
+    black.style.visibility="hidden";
+    blue.style.visibility="hidden";
+    red.style.visibility="hidden";
+
+    if (option == 1 )
+    {
+        blue.style.zindex=5;
+        blue.style.visibility="visible";
+    }
+    if (option == 2 )
+    {
+        black.style.zindex=5;
+        black.style.visibility="visible";
+    }
+    if (option == 3 )
+    {
+        red.style.zindex=5;
+        red.style.visibility="visible";
+    }
+}
+
+</script>
+</head>
+<body>
+<div id="display_area" name="display_area">
+<div id="tophalf" style="position:absolute; visibility:visible" width="320" height="200">
+	<img src="left_data/tophalf.gif" usemap="#tophalfmap" border="0" width="320" height="200">
+     
+	<map name="tophalfmap">
+		<area shape="poly" coords="57,32,87,46,84,97,24,108,38,86,32,59" onmouseover="displaygraphic(1); return true" href="http://www-student.it.uts.edu.au/~jinsonz/ip/ass-1/show_products.php?product_id=1003" target="top_right">
+      
+     		<area shape="circle" coords="174,73,26" onmouseover="displaygraphic(2); return true" href="http://www-student.it.uts.edu.au/~jinsonz/ip/ass-1/show_products.php?product_id=3003" target="top_right">
+      
+     		<area shape="rect" coords="210,122,265,173" onmouseover="displaygraphic(3); return true" href="http://www-student.it.uts.edu.au/~jinsonz/ip/ass-1/show_products.php?product_id=5003" target="top_right">
+     	</map>
+</div>
+<div id="bottomhalf" style="position:relative;
+     top:210;
+     width:320;
+     height:200">
+<!-- blank image -->
+	<img src="left_data/blank.gif" id="blank" style="z-index: 5; visibility:visible;" border="0" width="320" height="200">
+
+<!-- blue image -->
+	<img src="left_data/blue.gif" id="blue" style="z-index: 0; 
+     	position: relative;
+     	top: -205px;
+     	visibility:hidden;" border="0" width="320" height="200">
+
+<!-- black image -->
+	<img src="left_data/black.gif" id="black" style="z-index: 0; 
+     	position: relative;
+     	top: -410px;
+     	visibility:hidden;" border="0" width="320" height="200">
+
+<!-- red image -->
+	<img src="left_data/red.gif" id="red" style="z-index: 0; 
+     	position: relative;
+     	top: -615px;
+     	visibility:hidden;" border="0" width="320" height="200">
+
+</div>
+</div>
+
+
+</body></html>
