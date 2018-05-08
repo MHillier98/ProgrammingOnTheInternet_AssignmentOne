@@ -1,7 +1,10 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Top_Right_Frame</title>
+	<title>add.php</title>
 </head>
 <body>
 
@@ -20,6 +23,10 @@ if (!$connection) {
 $product_id = $_REQUEST['product_id'];
 */
 
+// we set session variable so it can be used in the cart.php page aswell
+/*
+$_SESSION['product_id']=$product_id;
+*/
 
 // query string for database, replace '*' with variable from image map
 $query_string = "select * from products"; // used to test database
@@ -61,6 +68,7 @@ if ($num_rows > 0 ) {
          print "<input type="text" name="quantity" size="3"><input type="submit" name="add" value="add">";
      	 print "</form>";
      	 print "</td>";
+     	 print "</tr>";
     }
 	
     print "</table>";
