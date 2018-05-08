@@ -11,7 +11,7 @@ session_start();
 
 <h1 style="text-align: center;">Shopping Cart</h1>
 
-<table>
+<table style="align:center;">
 <tr>
     <td>Product Name</td>
     <td>Unit Price</td>
@@ -22,6 +22,10 @@ session_start();
 
 
 <?php
+if (isset($_REQUEST['clear'])) {
+	unset($cart);
+}
+else{
 //retrieve product id from the session
 $product_id = $_SESSION[ 'product_id' ];
 
@@ -49,6 +53,9 @@ while ( $a_row = mysqli_fetch_assoc( $result ) ) {
 $cart = array( );
 
 //test if cart has contents already and print them
+if (isset($_REQUEST['clear'])) {
+	
+}
 // add check for quantity not empty(for delete button purpose)
 if ( !empty( $cart ) ) {
     print $cart;
@@ -72,8 +79,15 @@ $numprod = count( $cart );
 print "<tr>\n<td>Number of Products</td><td>$numprod</td></tr>";
 print "<tr>\n<td>Shopping Cart Total</td><td>$_SESSION['total_cost']</td></tr>";
 msqli_close($connection);
+}
 ?>
 
+</table>
+<table style="align:center;">
+	<tr>
+		<td><form action="cart.php" method="post"><input type="submit" name="clear" value="clear"></form></td>
+		<td><form action="checkout.php" method="post"><input type="submit" name="checkout" value="checkout"></form></td>
+	</tr>
 </table>
 
 </body>
