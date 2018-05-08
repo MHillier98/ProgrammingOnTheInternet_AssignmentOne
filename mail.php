@@ -6,6 +6,7 @@
 <body>
 
 <?php
+session_start();
 
 $fname=$_REQUEST['fname'];
 $lname=$_REQUEST['lname'];
@@ -15,6 +16,10 @@ $state=$_REQUEST['state'];
 $country=$_REQUEST['country'];
 $pcode=$_REQUEST['pcode'];
 $email=$_REQUEST['email'];
+
+//get cart from session and store it
+$cart = array( );
+$cart = $_SESSION['cart'];
 
 $to = $email;
 $subject = "Shopping Cart Checkout Email";
@@ -58,8 +63,25 @@ $message = "
 </table>
 <br>
 <p>Your order details are:</p>
-<table>
 
+
+<table>
+<tr>
+	<td>Product Name</td>
+	<td>Unit Price</td>
+	<td>Unit Quantity</td>
+	<td>Required Quantity</td>
+	<td>Total</td>
+</tr>
+";
+//add each line of cart to the message string
+foreach ($cart as $value) {
+    	$messge = $message.$value;
+    }
+
+$message=$message."
+<tr>\n<td>Number of Products</td><td>$_SESSION['numprod']</td></tr>
+<tr>\n<td>Shopping Cart Total</td><td>$_SESSION['total_cost']</td></tr>
 </table>
 </body>
 </html>

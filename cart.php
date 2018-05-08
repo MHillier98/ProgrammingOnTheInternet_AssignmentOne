@@ -23,7 +23,10 @@ session_start();
 
 <?php
 if (isset($_REQUEST['clear'])) {
+	//clear any data from cart array
 	unset($cart);
+	//clear all data from the session variables
+	session_unset();
 }
 else{
 //retrieve product id from the session
@@ -42,7 +45,7 @@ if ( !$connection ) {
 
 //query the database for the data we need
 $query_string = "select $product_id from products";
-$result       = mysqli_query( $connection, $query_string );
+$result = mysqli_query( $connection, $query_string );
 /*
 while ( $a_row = mysqli_fetch_assoc( $result ) ) {
     $cart = "<tr>\n<td>$a_row[product_name]</td><td>$a_row[unit_price]</td><td>$a_row[unit_quantity]</td><td>$quantity</td><td>" . $a_row[ unit_price ] * $quantity . "</td></tr>";
@@ -59,6 +62,7 @@ if (isset($_REQUEST['clear'])) {
 // add check for quantity not empty(for delete button purpose)
 
 //check if cart is empty
+/*
 if ( !empty( $cart ) ) {
     //add product to cart array
     if ( !empty( $result ) ) {
@@ -71,21 +75,23 @@ if ( !empty( $cart ) ) {
     	print $value;
     }   
 }
+*/
 //first time adding items to cart
-else {
-    if ( !empty( $result ) ) {
+//else {
+    //if ( !empty( $result ) ) {
         while ( $a_row = mysqli_fetch_assoc( $result ) ) {
             $cart = "<tr>\n<td>$a_row[product_name]</td><td>$a_row[unit_price]</td><td>$a_row[unit_quantity]</td><td>$quantity</td><td>" . $_SESSION[ 'total_cost' ] = $a_row[ unit_price ] * $quantity . "</td></tr>";
         }
-    }
+    //}
     //print all elements in cart
     foreach ($cart as $value) {
     	print $value;
     }
-}
-$numprod = count( $cart );
+$_SESSION['numprod'] = count( $cart );
+$numprod=$_SESSION['numprod'];
 print "<tr>\n<td>Number of Products</td><td>$numprod</td></tr>";
 print "<tr>\n<td>Shopping Cart Total</td><td>$_SESSION['total_cost']</td></tr>";
+$_SESSION['cart']=$cart;
 msqli_close($connection);
 }
 ?>
