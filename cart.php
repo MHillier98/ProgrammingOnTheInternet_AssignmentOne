@@ -71,6 +71,7 @@ else {
 $numprod = count( $cart );
 print "<tr>\n<td>Number of Products</td><td>$numprod</td></tr>";
 print "<tr>\n<td>Shopping Cart Total</td><td>$_SESSION['total_cost']</td></tr>";
+msqli_close($connection);
 ?>
 
 </table>

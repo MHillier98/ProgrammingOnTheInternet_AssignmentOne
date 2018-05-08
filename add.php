@@ -64,8 +64,8 @@ if ( $num_rows > 0 ) {
         
         // create the quantity text box, and submit button, ready to send to cart.php
         print "<td>";
-        print "<form action="cart.php" method="post">";
-        print "<input type="text" name="quantity" size="3"><input type="submit" name="add" value="add">";
+        print "<form action=\"cart.php\" method=\"post\">";
+        print "<input type=\"text\" name=\"quantity\" size=\"3\"><input type=\"submit\" name=\"add\" value=\"add\">";
         print "</form>";
         print "</td>";
         print "</tr>";
