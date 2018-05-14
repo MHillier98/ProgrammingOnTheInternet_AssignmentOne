@@ -3,9 +3,9 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>add.php</title>
-</head>
+    <head>
+        <title>add.php</title>
+    </head>
 <body>
 
 <?php
@@ -19,22 +19,17 @@ if ( !$connection ) {
 }
 
 // get variables passed from image map
-/*
 $product_id = $_REQUEST['product_id'];
-*/
 
 // we set session variable so it can be used in the cart.php page aswell
-/*
 $_SESSION['product_id']=$product_id;
-*/
 
 // query string for database, replace '*' with variable from image map
-$query_string = "select * from products"; // used to test database
-//$query_string = "select $product_id from products"; 
+//$query_string = "select * from products"; // used to test database
+$query_string = "select $product_id from products"; 
 
 // query the database and store the result
 $result = mysqli_query( $connection, $query_string );
-
 
 $num_rows = mysqli_num_rows( $result );
 

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css">
+
+		<script language="javascript">
+			function showcategory(index) {
+				console.log(index);
+				var blank = document.getElementById('blank');
+				blank.style.zindex=0;
+				blank.style.visibility="hidden";
+				
+				var frozen_food = document.getElementById('frozen_food');
+				frozen_food.style.zindex=0;
+				frozen_food.style.visibility="hidden";
+				
+				var fresh_food = document.getElementById('fresh_food');
+				fresh_food.style.zindex=0;
+				fresh_food.style.visibility="hidden";
+				
+				var beverages = document.getElementById('beverages');
+				beverages.style.zindex=0;
+				beverages.style.visibility="hidden";
+				
+				var home_health = document.getElementById('home_health');
+				home_health.style.zindex=0;
+				home_health.style.visibility="hidden";
+				
+				var pet_food = document.getElementById('pet_food');
+				pet_food.style.zindex=0;
+				pet_food.style.visibility="hidden";
+				
+				if ( index == 1 ) {
+					frozen_food.style.zindex=5;
+					frozen_food.style.visibility="visible";
+				}
+				if ( index == 2 ) {
+					fresh_food.style.zindex=5;
+					fresh_food.style.visibility="visible";
+				}
+				if ( index == 3 ) {
+					beverages.style.zindex=5;
+					beverages.style.visibility="visible";
+				}
+				if ( index == 4 ) {
+					home_health.style.zindex=5;
+					home_health.style.visibility="visible";
+				}
+				if ( index == 5 ) {
+					pet_food.style.zindex=5;
+					pet_food.style.visibility="visible";
+				}
+			}
+		</script>
+	</head>
+	
+	<body>
+		<div id="image-frame" name="image_frame">
+			<div id="tophalf" width="624" height="226">
+				<img src="menu/categories.png" usemap="#categories" border="0" width="624" height="226">
+			
+				<map name="categories">
+					<!-- <area shape="rect" coords="210,122,265,173" onmouseover="displaygraphic(3); return true" href="http://www-student.it.uts.edu.au/~jinsonz/ip/ass-1/show_products.php?product_id=5003" target="top_right"> -->
+					<area shape="rect" coords="8,175, 109,225" onmouseover="showcategory(1);" alt="Frozen Food" title="Frozen Food"> <!--href="" target="top-right_frame" -->
+					<area shape="rect" coords="127,175, 227,225" onmouseover="showcategory(2);" alt="Fresh Food" title="Fresh Food">
+					<area shape="rect" coords="246,175, 346,225" onmouseover="showcategory(3);" alt="Beverages" title="Beverages">
+					<area shape="rect" coords="366,175, 466,225" onmouseover="showcategory(4);" alt="Home Health" title="Home Health">
+					<area shape="rect" coords="483,175, 584,225" onmouseover="showcategory(5);" alt="Pet Food" title="Pet Food">
+				</map>
+			</div>
+			<div id="bottomhalf" style="position:relative; top:226; width:624; height:423;">
+				<img src="menu/blank.png" id="blank" style="z-index: 0; position: relative; top: -4px; visibility:visible;" border="0" width="624" height="423">
+ 				<img src="menu/frozen_food.png" usemap="#frozen_food" id="frozen_food" style="z-index: 0; position: relative; top: -431px; visibility:hidden;" border="0" width="624" height="423">
+
+				 <map name="frozen_food">
+					 <area shape="rect" coords="8,164, 109,214" onmouseover="" title="Hamburger Patties"> <!--href="" target="top-right_frame" -->
+	 
+					 <area shape="rect" coords="77,312, 177,361" onmouseover="" title="Fish Fingers 500 Gram">
+					 <area shape="rect" coords="194,312, 295,361" onmouseover="" title="Fish Fingers 1000 Gram">
+	 
+					 <area shape="rect" coords="246,166, 346,215" onmouseover="" title="Shelled Prawns">
+	 
+					 <area shape="rect" coords="318,310, 419,360" onmouseover="" title="Tub Ice Cream 1 Litre">
+					 <area shape="rect" coords="436,310, 536,360" onmouseover="" title="Tub Ice Cream 2 Litre">
+				 </map>
+
+				<img src="menu/fresh_food.png" usemap="#fresh_food" id="fresh_food" style="z-index: 0; position: relative; top: -858px; visibility:hidden;" border="0" width="624" height="423">
+				<map name="fresh_food">
+					<area shape="rect" coords="7,163, 85,212" onmouseover="" title="T'Bone Steak"> <!--href="" target="top-right_frame" -->
+	
+					<area shape="rect" coords="43,311, 144,361" onmouseover="" title="Cheddar Cheese 500 Gram">
+					<area shape="rect" coords="161,311, 261,361" onmouseover="" title="Cheddar Cheese 1000 Gram">
+	
+					<area shape="rect" coords="178,163, 256,212" onmouseover="" title="Navel Oranges">
+					<area shape="rect" coords="267,163, 345,212" onmouseover="" title="Bananas">
+					<area shape="rect" coords="353,163, 431,212" onmouseover="" title="Grapes">
+					<area shape="rect" coords="441,163, 519,212" onmouseover="" title="Apples">
+					<area shape="rect" coords="526,163, 604,212" onmouseover="" title="Peaches">
+				</map>
+	
+				<img src="menu/beverages.png" usemap="#beverages" id="beverages" style="z-index: 0; position: relative; top: -1285px; visibility:hidden;" border="0" width="624" height="423">
+				<map name="beverages">
+					<area shape="rect" coords="25,305, 104,353" onmouseover="" title="Coffee 200 Gram"> <!--href="" target="top-right_frame" -->
+					<area shape="rect" coords="113,305, 191,353" onmouseover="" title="Coffee 500 Gram">
+					
+					<area shape="rect" coords="200,305, 279,353" onmouseover="" title="Earl Grey Tea Bags Pack 25">
+					<area shape="rect" coords="287,305, 365,353" onmouseover="" title="Earl Grey Tea Bags Pack 100">
+					<area shape="rect" coords="374,305, 453,353" onmouseover="" title="Earl Grey Tea Bags Pack 200">
+					
+					<area shape="rect" coords="492,171, 593,220" onmouseover="" title="Chocolate Bar">
+				</map>
+	
+				<img src="menu/home_health.png" usemap="#home_health" id="home_health" style="z-index: 0; position: relative; top: -1712px; visibility:hidden;" border="0" width="624" height="423">
+				<map name="home_health">
+					<area shape="rect" coords="9,163, 110,211" onmouseover="" title="Bath Soap"> <!--href="" target="top-right_frame" -->
+					
+					<area shape="rect" coords="78,311, 179,361" onmouseover="" title="Panadol Pack 24">
+					<area shape="rect" coords="195,311, 296,361" onmouseover="" title="Panadol Pack 50">
+					
+					<area shape="rect" coords="247,163, 348,212" onmouseover="" title="Washing Powder">
+					
+					<area shape="rect" coords="319,311, 420,361" onmouseover="" title="Garbage Bags small (pack 10)">
+					<area shape="rect" coords="437,311, 538,361" onmouseover="" title="Garbage Bags small (pack 50)">
+					
+					<area shape="rect" coords="486,163, 586,212" onmouseover="" title="Laundry Bleach">
+				</map>
+	
+				<img src="menu/pet_food.png" usemap="#pet_food" id="pet_food" style="z-index: 0; position: relative; top: -2139px; visibility:hidden;" border="0" width="624" height="423">
+				<map name="pet_food">
+					<area shape="rect" coords="129,163, 229,212" onmouseover="" title="Bird Food"> <!--href="" target="top-right_frame" -->
+					<area shape="rect" coords="247,163, 347,212" onmouseover="" title="Cat Food">
+	
+					<area shape="rect" coords="319,310, 420,360" onmouseover="" title="Dry Dog Food 1 kg. Pack">
+					<area shape="rect" coords="437,310, 538,360" onmouseover="" title="Dry Dog Food 5 kg. Pack">
+					
+					<area shape="rect" coords="486,163, 586,212" onmouseover="" title="Fish Food">
+				</map>
+			</div>
+		</div>
+	</body>
+</html>
