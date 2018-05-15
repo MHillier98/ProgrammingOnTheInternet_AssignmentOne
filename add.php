@@ -26,7 +26,7 @@ $_SESSION['product_id']=$product_id;
 
 // query string for database, replace '*' with variable from image map
 //$query_string = "select * from products"; // used to test database
-$query_string = "select $product_id from products"; 
+$query_string = "select product_id from products where product_id = $product_id;"; 
 
 // query the database and store the result
 $result = mysqli_query( $connection, $query_string );
