@@ -26,7 +26,7 @@ $_SESSION['product_id']=$product_id;
 
 // query string for database, replace '*' with variable from image map
 //$query_string = "select * from products"; // used to test database
-$query_string = "select product_id from products where product_id = $product_id;"; 
+$query_string = "select * from products where product_id = $product_id;"; 
 
 // query the database and store the result
 $result = mysqli_query( $connection, $query_string );
@@ -59,7 +59,7 @@ if ( $num_rows > 0 ) {
         
         // create the quantity text box, and submit button, ready to send to cart.php
         print "<td>";
-        print "<form action=\"cart.php\" method=\"post\">";
+        print "<form action=\"test.php\" method=\"post\">";
         print "<input type=\"text\" name=\"quantity\" size=\"3\"><input type=\"submit\" name=\"add\" value=\"add\">";
         print "</form>";
         print "</td>";
