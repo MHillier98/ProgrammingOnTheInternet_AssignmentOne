@@ -35,7 +35,7 @@ else{
 // get Variables
 $product_id=$_SESSION['product_id'];
 $quantity=$_REQUEST['quantity'];
-$cart=array();
+$cart="";
 echo $product_id;
 echo $quantity;
 
@@ -64,19 +64,14 @@ print'
     </tr>';
 
 
-/*
 if ( !empty( $_SESSION['cart'] ) ) {
-//add product to cart array
-$cart = $_SESSION['cart'];
+
                     while ( $a_row = mysqli_fetch_assoc( $result ) ) {
                         $cost=$a_row[unit_price]*$quantity;
                         $cart= "<tr>\n"."<td>$a_row[product_name]</td>"."<td>$a_row[unit_price]</td>"."<td>$a_row[unit_quantity]</td>"."<td>$quantity</td>"."<td>".$cost."</td>"."</tr>";
-                    }
-            
-            //print all elements in cart
-            foreach ($cart as $value) {
-                print $value;
-            }   
+                        print $cart;
+                        print $_SESSION['cart'];
+                    }              
         }
 else{
    while ( $a_row = mysqli_fetch_assoc( $result ) ) {
@@ -85,13 +80,6 @@ else{
         print $cart;
     }
 }
-*/
-   while ( $a_row = mysqli_fetch_assoc( $result ) ) {
-        $cost=$a_row[unit_price]*$quantity;
-        $cart= "<tr>\n"."<td>$a_row[product_name]</td>"."<td>$a_row[unit_price]</td>"."<td>$a_row[unit_quantity]</td>"."<td>$quantity</td>"."<td>".$cost."</td></tr>";
-        print $cart;
-    }
-
 
 
 $numprod=$_SESSION['numprod'];
@@ -116,7 +104,7 @@ if (!empty($cart)) {
     </table>';
 }
 
-$_SESSION['cart']=$cart;
+$_SESSION['cart']=$_SESSION['cart'].$cart;
 }
 ?>
 
