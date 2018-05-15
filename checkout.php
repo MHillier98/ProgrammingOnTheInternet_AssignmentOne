@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>checkout.php</title>
+		<link rel="stylesheet" href="style.css">
+		<title>Checkout</title>
 	</head>
 	
 	<body>
@@ -43,7 +44,7 @@
 							<option value="Argentina">Argentina</option>
 							<option value="Armenia">Armenia</option>
 							<option value="Aruba">Aruba</option>
-							<option value="Australia">Australia</option>
+							<option value="Australia" selected>Australia</option>
 							<option value="Austria">Austria</option>
 							<option value="Azerbaijan">Azerbaijan</option>
 							<option value="Bahamas">Bahamas</option>
@@ -150,7 +151,7 @@
 							<option value="Kyrgyzstan">Kyrgyzstan</option>
 							<option value="Lao">Lao People's Democratic Republic</option>
 							<option value="Latvia">Latvia</option>
-							<option value="Lebanon" selected>Lebanon</option>
+							<option value="Lebanon">Lebanon</option>
 							<option value="Lesotho">Lesotho</option>
 							<option value="Liberia">Liberia</option>
 							<option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>

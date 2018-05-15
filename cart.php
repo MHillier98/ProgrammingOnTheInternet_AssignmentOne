@@ -5,7 +5,8 @@ session_start();
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Cart.php</title>
+        <link rel="stylesheet" href="style.css">
+        <title>Cart</title>
     </head>
     
     <body>

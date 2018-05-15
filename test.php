@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="style.css">
     <title>cart.php</title>
 </head>
 <body>
@@ -23,37 +24,35 @@ if ( !$connection ) {
 <?
 
 if(isset($_REQUEST['clear'])){
-        //clear any data from cart array
-        unset($cart);
-        //clear all data from the session variables
-        session_unset($_SESSION['numprod']);
-        session_unset($_SESSION['total_cost']);
-        session_unset($_SESSION['product_id']);
+    //clear any data from cart array
+    unset($cart);
+    //clear all data from the session variables
+    session_unset($_SESSION['numprod']);
+    session_unset($_SESSION['total_cost']);
+    session_unset($_SESSION['product_id']);
 }
-else{
-
-// get Variables
-$product_id=$_SESSION['product_id'];
-$quantity=$_REQUEST['quantity'];
-$cart="";
-echo $product_id;
-echo $quantity;
-
-
-
-//Construct query
-$query="select * from products where product_id=$product_id";
-echo $query;
+else {
+    // get Variables
+    $product_id=$_SESSION['product_id'];
+    $quantity=$_REQUEST['quantity'];
+    $cart="";
+    // echo $product_id;
+    // echo $quantity;
 
 
 
-$result = mysqli_query( $connection, $query);
-        if (empty($result)) {
-            echo "empty result";
-        }
+    //Construct query
+    $query="select * from products where product_id=$product_id";
+    // echo $query;
 
 
-print'
+
+    $result = mysqli_query( $connection, $query);
+    if (empty($result)) {
+        echo "empty result";
+    }
+
+    print'
     <table style="align:center;">
     <tr>
         <td>Product Name</td>
@@ -64,47 +63,46 @@ print'
     </tr>';
 
 
-if ( !empty( $_SESSION['cart'] ) ) {
-
-                    while ( $a_row = mysqli_fetch_assoc( $result ) ) {
-                        $cost=$a_row[unit_price]*$quantity;
-                        $cart= "<tr>\n"."<td>$a_row[product_name]</td>"."<td>$a_row[unit_price]</td>"."<td>$a_row[unit_quantity]</td>"."<td>$quantity</td>"."<td>".$cost."</td>"."</tr>";
-                        print $cart;
-                        print $_SESSION['cart'];
-                    }              
-        }
-else{
-   while ( $a_row = mysqli_fetch_assoc( $result ) ) {
-        $cost=$a_row[unit_price]*$quantity;
-        $cart= "<tr>\n"."<td>$a_row[product_name]</td>"."<td>$a_row[unit_price]</td>"."<td>$a_row[unit_quantity]</td>"."<td>$quantity</td>"."<td>".$cost."</td>"."</tr>";
-        print $cart;
+    if ( !empty( $_SESSION['cart'] ) ) {
+        while ( $a_row = mysqli_fetch_assoc( $result ) ) {
+            $cost=$a_row[unit_price]*$quantity;
+            $cart= "<tr>\n"."<td>$a_row[product_name]</td>"."<td>$a_row[unit_price]</td>"."<td>$a_row[unit_quantity]</td>"."<td>$quantity</td>"."<td>".$cost."</td>"."</tr>";
+            print $cart;
+            print $_SESSION['cart'];
+        }              
     }
-}
+    else {
+        while ( $a_row = mysqli_fetch_assoc( $result ) ) {
+            $cost=$a_row[unit_price]*$quantity;
+            $cart= "<tr>\n"."<td>$a_row[product_name]</td>"."<td>$a_row[unit_price]</td>"."<td>$a_row[unit_quantity]</td>"."<td>$quantity</td>"."<td>".$cost."</td>"."</tr>";
+            print $cart;
+        }
+    }
 
 
-$numprod=$_SESSION['numprod'];
-$numprod=$numprod+1;
-print "<tr>\n<td>Number of Products</td><td>$numprod</td></tr>";
-$_SESSION['numprod']=$numprod;
+    $numprod=$_SESSION['numprod'];
+    $numprod=$numprod+1;
+    print "<tr>\n<td>Number of Products</td><td>$numprod</td></tr>";
+    $_SESSION['numprod']=$numprod;
 
-$total_cost=$_SESSION['total_cost'];
-$total_cost=$total_cost+$cost;
-print "<tr>\n<td>Shopping Cart Total</td><td>$total_cost</td></tr>";
-$_SESSION['total_cost']=$total_cost;
+    $total_cost=$_SESSION['total_cost'];
+    $total_cost=$total_cost+$cost;
+    print "<tr>\n<td>Shopping Cart Total</td><td>$total_cost</td></tr>";
+    $_SESSION['total_cost']=$total_cost;
 
 
-print '</table>';
+    print '</table>';
 
-if (!empty($cart)) {
-    print'<table style="align:center;">
-        <tr>
-            <td><form action="test.php" method="get"><input type="submit" name="clear" value="clear"></form></td>
-            <td><form action="checkout.php" method="post"><input type="submit" name="checkout" value="checkout"></form></td>
-        </tr>
-    </table>';
-}
+    if (!empty($cart)) {
+        print'<table style="align:center;">
+            <tr>
+                <td><form action="test.php" method="get"><input type="submit" name="clear" value="clear"></form></td>
+                <td><form action="checkout.php" method="post"><input type="submit" name="checkout" value="checkout"></form></td>
+            </tr>
+        </table>';
+    }
 
-$_SESSION['cart']=$_SESSION['cart'].$cart;
+    $_SESSION['cart']=$_SESSION['cart'].$cart;
 }
 ?>
 
