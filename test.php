@@ -30,7 +30,7 @@ $cart=array();
 <?
 //Construct query
 $query="select * from products where product_id=$product_id";
-print $query
+print $query;
 ?>
 
 <?
