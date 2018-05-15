@@ -19,7 +19,6 @@
 	$email=$_REQUEST['email'];
 
 	//get cart from session and store it
-	$cart = array( );
 	$cart = $_SESSION['cart'];
 
 	$to = $email;
@@ -75,10 +74,8 @@
 		<td>Total</td>
 	</tr>
 	";
-	//add each line of cart to the message string
-	foreach ($cart as $value) {
-		$messge = $message.$value;
-	}
+	//add cart to the message string
+		$messge = $message.$cart;
 
 	$message=$message."
 	<tr>\n<td>Number of Products</td><td>$_SESSION['numprod']</td></tr>
