@@ -284,7 +284,7 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" name="mail"></td>
+					<td><input type="submit" name="mail" value="mail"></td>
 				</tr>
 
 			</table>

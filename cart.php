@@ -81,7 +81,8 @@ session_start();
         //else {
             //if ( !empty( $result ) ) {
                 while ( $a_row = mysqli_fetch_assoc( $result ) ) {
-                    $cart = "<tr>\n<td>$a_row[product_name]</td><td>$a_row[unit_price]</td><td>$a_row[unit_quantity]</td><td>$quantity</td><td>" . $_SESSION[ 'total_cost' ] = $a_row[ unit_price ] * $quantity . "</td></tr>";
+                    $cart = "<tr><td>$a_row[product_name]</td><td>$a_row[unit_price]</td><td>$a_row[unit_quantity]</td><td>$quantity</td><td>" . $_SESSION[ 'total_cost' ] = $a_row[ unit_price ] * $quantity . "</td></tr>";
+                    //$cart = "<tr>\n<td>$a_row[product_name]</td><td>$a_row[unit_price]</td><td>$a_row[unit_quantity]</td><td>$quantity</td><td>" . $_SESSION[ 'total_cost' ] = $a_row[ unit_price ] * $quantity . "</td></tr>";
                 }
             //}
             //print all elements in cart
@@ -90,8 +91,10 @@ session_start();
             }
         $_SESSION['numprod'] = count( $cart );
         $numprod=$_SESSION['numprod'];
-        print "<tr>\n<td>Number of Products</td><td>$numprod</td></tr>";
-        print "<tr>\n<td>Shopping Cart Total</td><td>$_SESSION['total_cost']</td></tr>";
+        print "<tr><td>Number of Products</td><td>$numprod</td></tr>";
+        print "<tr><td>Shopping Cart Total</td><td>$_SESSION['total_cost']</td></tr>";
+        // print "<tr>\n<td>Number of Products</td><td>$numprod</td></tr>";
+        // print "<tr>\n<td>Shopping Cart Total</td><td>$_SESSION['total_cost']</td></tr>";
         $_SESSION['cart']=$cart;
         msqli_close($connection);
     }
@@ -100,8 +103,16 @@ session_start();
     </table>
     <table style="align:center;">
     	<tr>
-    		<td><form action="cart.php" method="post"><input type="submit" name="clear" value="clear"></form></td>
-    		<td><form action="checkout.php" method="post"><input type="submit" name="checkout" value="checkout"></form></td>
+    		<td>
+                <form action="cart.php" method="post">
+                    <input type="submit" name="clear" value="clear">
+                </form>
+            </td>
+    		<td>
+                <form action="checkout.php" method="post">
+                    <input type="submit" name="checkout" value="checkout">
+                </form>
+            </td>
     	</tr>
     </table>
 
