@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>cart.php</title>
+    <title>cart.php</title>
 </head>
 <body>
 <?php
@@ -23,14 +23,16 @@ if ( !$connection ) {
 <?
 // get Variables
 $product_id=$_SESSION['product_id'];
-$quantity=$_REQUEST['add'];
+$quantity=$_REQUEST['quantity'];
 $cart=array();
+echo $product_id;
+echo $quantity;
 ?>
 
 <?
 //Construct query
 $query="select * from products where product_id=$product_id";
-print $query;
+echo $query;
 ?>
 
 <?
@@ -51,21 +53,20 @@ $result = mysqli_query( $connection, $query);
     </tr>
 
 <?
+/*
 if ( !empty( $_SESSION['cart'] ) ) {
 //add product to cart array
 $cart = $_SESSION['cart'];
-                   	while ( $a_row = mysqli_fetch_assoc( $result ) ) {
-       					$cost=$a_row[unit_price]*$quantity;
-        				$cart= "<tr>\n"."<td>$a_row[product_name]</td>"."<td>$a_row[unit_price]</td>"."<td>$a_row[unit_quantity]</td>"."<td>$quantity</td>"."<td>".$cost."</td>"."</tr>";
-    				}
+                    while ( $a_row = mysqli_fetch_assoc( $result ) ) {
+                        $cost=$a_row[unit_price]*$quantity;
+                        $cart= "<tr>\n"."<td>$a_row[product_name]</td>"."<td>$a_row[unit_price]</td>"."<td>$a_row[unit_quantity]</td>"."<td>$quantity</td>"."<td>".$cost."</td>"."</tr>";
+                    }
             
             //print all elements in cart
             foreach ($cart as $value) {
                 print $value;
             }   
         }
-
-
 else{
    while ( $a_row = mysqli_fetch_assoc( $result ) ) {
         $cost=$a_row[unit_price]*$quantity;
@@ -73,20 +74,38 @@ else{
         print $cart;
     }
 }
+*/
+   while ( $a_row = mysqli_fetch_assoc( $result ) ) {
+        $cost=$a_row[unit_price]*$quantity;
+        $cart= "<tr>\n"."<td>$a_row[product_name]</td>"."<td>$a_row[unit_price]</td>"."<td>$a_row[unit_quantity]</td>"."<td>$quantity</td>"."<td>".$cost."</td></tr>";
+        print $cart;
+    }
 ?>
 
 <?
-$_SESSION['numprod'] = count($cart);
-$_SESSION['total_cost']=$_SESSION['total_cost']+$cost;
-print "<tr>\n<td>Number of Products</td><td>$_SESSION['numprod']</td></tr>";
-print "<tr>\n<td>Shopping Cart Total</td><td>$_SESSION['total_cost']</td></tr>";
+$numprod=$_SESSION['numprod'];
+$numprod=$numprod+1;
+print "<tr>\n<td>Number of Products</td><td>$numprod</td></tr>";
+$_SESSION['numprod']=$numprod;
+
+$total_cost=$_SESSION['total_cost'];
+$total_cost=$total_cost+$cost;
+print "<tr>\n<td>Shopping Cart Total</td><td>$total_cost</td></tr>";
+$_SESSION['total_cost']=$total_cost;
 ?>
 
 </table>
 
-<?
+    <table style="align:center;">
+        <tr>
+            <td><form action="cart.php" method="post"><input type="submit" name="clear" value="clear"></form></td>
+            <td><form action="checkout.php" method="post"><input type="submit" name="checkout" value="checkout"></form></td>
+        </tr>
+    </table>
 
+<?
 $_SESSION['cart']=$cart;
+
 msqli_close($connection);
 ?>
 </body>
