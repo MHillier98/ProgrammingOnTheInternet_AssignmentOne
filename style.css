@@ -7,3 +7,10 @@
     height: 649px;
     overflow-y: hidden;
 }
+
+table, td, th {
+	border: 2px solid;
+	border-spacing: 2px;
+	padding: 2px;
+
+}
