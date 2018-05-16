@@ -3,10 +3,133 @@
 	<head>
 		<link rel="stylesheet" href="style.css">
 		<title>Checkout</title>
+
+		<script language="javascript">
+			function validateForm() {
+				var fname = document.forms["mailForm"]["fname"].value;
+				var lname = document.forms["mailForm"]["lname"].value;
+				var address = document.forms["mailForm"]["address"].value;
+				var suburb = document.forms["mailForm"]["suburb"].value;
+				var state = document.forms["mailForm"]["state"].value;
+				var country = document.forms["mailForm"]["country"].value;
+				var pcode = document.forms["mailForm"]["pcode"].value;
+				var email = document.forms["mailForm"]["email"].value;
+
+				if (fname.length <= 0) {
+					alert("The first name is invalid.");
+					return false;
+				}
+				if (!isNaN(fname)) {
+					alert("The first name is invalid.");
+					return false;
+				}
+				if (fname == "") {
+					alert("The first name is invalid.");
+					return false;
+				}
+
+
+				if (lname.length <= 0) {
+					alert("The last name is invalid.");
+					return false;
+				}
+				if (!isNaN(lname)) {
+					alert("The last name is invalid.");
+					return false;
+				}
+				if (lname == "") {
+					alert("The last name is invalid.");
+					return false;
+				}
+
+
+				if (address.length <= 0) {
+					alert("The address is invalid.");
+					return false;
+				}
+				if (!isNaN(address)) {
+					alert("The address is invalid.");
+					return false;
+				}
+				if (address == "") {
+					alert("The address is invalid.");
+					return false;
+				}
+
+
+				if (state.length <= 0) {
+					alert("The state is invalid.");
+					return false;
+				}
+				if (!isNaN(state)) {
+					alert("The state is invalid.");
+					return false;
+				}
+				if (state == "") {
+					alert("The state is invalid.");
+					return false;
+				}
+
+
+				if (country.length <= 0) {
+					alert("The country is invalid.");
+					return false;
+				}
+				if (!isNaN(country)) {
+					alert("The country is invalid.");
+					return false;
+				}
+				if (country == "") {
+					alert("The country is invalid.");
+					return false;
+				}
+
+
+				if (pcode.length <= 0) {
+					alert("The post code is invalid.");
+					return false;
+				}
+				if (isNaN(pcode)) {
+					alert("The post code is invalid.");
+					return false;
+				}
+				if (pcode == "") {
+					alert("The post code is invalid.");
+					return false;
+				}
+
+
+				if (pcode.length <= 0) {
+					alert("That email address is invalid.");
+					return false;
+				}
+				if (!isNaN(email)) {
+					alert("That email address is invalid.");
+					return false;
+				}
+				if (email == "") {
+					alert("That email address is invalid.");
+					return false;
+				}
+
+				var emailTest = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
+				if (emailTest.test(email)) {
+					alert("That email address is invalid- not a proper email");
+					return false;
+				}
+
+				return true;
+			}
+		</script>
 	</head>
 	
 	<body>
-		<form action="mail.php" method="post">
+		<!-- <form action="test.php" name="addForm" onsubmit="return validateForm();" method="post" target="bottom-right_frame">";
+        <input type="text" name="quantity" size="3"><input type="submit" name="Add" value="add">"; -->
+
+
+
+		<form action="mail.php" method="post" name="mailForm" onsubmit="console.log('foo'); return validateForm();">
 			<table>
 				<tr>
 					<td>First Name:</td>
@@ -14,19 +137,19 @@
 				</tr>
 				<tr>
 					<td>Last Name:</td>
-					<td><input type="text" name="lname"></td>
+					<td><input type="text" name="lname" size="50"></td>
 				</tr>
 				<tr>
 					<td>Address:</td>
-					<td><input type="text" name="address"></td>
+					<td><input type="text" name="address" size="50"></td>
 				</tr>
 				<tr>
 					<td>Suburb:</td>
-					<td><input type="text" name="suburb"></td>
+					<td><input type="text" name="suburb" size="50"></td>
 				</tr>
 				<tr>
 					<td>State:</td>
-					<td><input type="text" name="state"></td>
+					<td><input type="text" name="state" size="50"></td>
 				</tr>
 				<tr>
 					<td>Country:</td>
@@ -276,17 +399,16 @@
 				</tr>
 				<tr>
 					<td>Postcode:</td>
-					<td><input type="text" name="pcode"></td>
+					<td><input type="text" name="pcode" size="50"></td>
 				</tr>
 				<tr>
 					<td>Email:</td>
-					<td><input type="text" name="email"></td>
+					<td><input type="text" name="email" size="50"></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" name="mail" value="mail"></td>
+					<td><input type="submit" name="mailSubmit" value="mail"></td>
 				</tr>
-
 			</table>
 		</form>
 	</body>

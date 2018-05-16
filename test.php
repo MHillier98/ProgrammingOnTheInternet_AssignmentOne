@@ -3,6 +3,27 @@
     <head>
         <link rel="stylesheet" href="style.css">
         <title>cart.php</title>
+
+		<script language="javascript">
+			function validateForm() {
+                var cost = document.getElementsByName("cost");
+
+				if (isNaN(cost)) {
+					alert("There are no products in the cart");
+					return false;
+				}
+				if (cost == "") {
+					alert("There are no products in the cart");
+					return false;
+				}
+				if (cost <= 0) {
+					alert("There are no products in the cart");
+					return false;
+				}
+
+				return true;
+			}
+		</script>
     </head>
     
     <body>
@@ -70,7 +91,7 @@
                     // $cart= "<tr>\n"."<td>$a_row[product_name]</td>"."<td>$a_row[unit_price]</td>"."<td>$a_row[unit_quantity]</td>"."<td>$quantity</td>"."<td>".$cost."</td>"."</tr>";
                     print $cart;
                     print $_SESSION['cart'];
-                }              
+                }
             }
             else {
                 while ( $a_row = mysqli_fetch_assoc( $result ) ) {
@@ -81,7 +102,6 @@
                 }
             }
 
-
             $numprod=$_SESSION['numprod'];
             $numprod=$numprod+1;
             print "<tr><td>Number of Products</td><td>$numprod</td></tr>";
@@ -90,10 +110,9 @@
 
             $total_cost=$_SESSION['total_cost'];
             $total_cost=$total_cost+$cost;
-            print "<tr><td>Shopping Cart Total</td><td>$total_cost</td></tr>";
+            print '<tr><td>Shopping Cart Total</td><td><div type="cost">'.$total_cost.'</div></td></tr>';
             // print "<tr>\n<td>Shopping Cart Total</td><td>$total_cost</td></tr>";
             $_SESSION['total_cost']=$total_cost;
-
 
             print '</table>';
 
@@ -101,7 +120,7 @@
                 print'<table style="align:center;">
                     <tr>
                         <td><form action="test.php" method="get"><input type="submit" name="clear" value="clear"></form></td>
-                        <td><form action="checkout.php" method="post"><input type="submit" name="checkout" value="checkout"></form></td>
+                        <td><form action="checkout.php" method="post"><input type="submit" onsubmit="return validateForm();" name="checkout" value="checkout"></form></td>
                     </tr>
                 </table>';
             }

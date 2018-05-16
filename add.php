@@ -13,7 +13,7 @@ session_start();
                 var x = Number(document.forms["addForm"]["quantity"].value);
 
                 if (isNaN(x)) {
-                    alert("The data in the field isn't a number. 1");
+                    alert("The data in the field isn't a number.");
                     return false;
                 }
                 if (x == "") {
